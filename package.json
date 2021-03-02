@@ -5,13 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node src",
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "commander": "7.1.0",
-    "jsencrypt": "3.0.1",
     "rxjs": "6.6.3"
   },
   "devDependencies": {
