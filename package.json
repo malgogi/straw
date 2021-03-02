@@ -2,14 +2,14 @@
   "name": "straw",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "ts-node src",
     "test": "jest",
     "build": "tsc"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "malgogi",
+  "license": "MIT",
   "dependencies": {
     "rxjs": "6.6.3"
   },
