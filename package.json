@@ -1,17 +1,23 @@
 {
-  "name": "straw",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "malgogi-rx-straw",
+  "version": "0.0.1",
+  "description": "rxjs utility module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "start": "ts-node src",
-    "test": "jest"
+    "test": "jest --runInBand",
+    "build": "tsc"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/malgogi/straw/issues"
+  },
+  "homepage":"https://github.com/malgogi/straw#readme",
+  "author": "malgogi <dlowgh7@gmail.com>",
+  "license": "MIT",
   "dependencies": {
-    "commander": "7.1.0",
-    "jsencrypt": "3.0.1",
+    "moment": "2.29.1",
     "rxjs": "6.6.3"
   },
   "devDependencies": {
