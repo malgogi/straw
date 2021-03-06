@@ -11,6 +11,7 @@
   "author": "malgogi",
   "license": "MIT",
   "dependencies": {
+    "moment": "2.29.1",
     "rxjs": "6.6.3"
   },
   "devDependencies": {
