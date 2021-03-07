@@ -1,6 +1,6 @@
-import { circuitBreaker, CircuitBreakOptions } from "./circuitBreaker";
+import { circuitBreaker, CircuitBreakOption } from "./circuitBreaker";
 
 export {
     circuitBreaker,
-    CircuitBreakOptions,
+    CircuitBreakOption,
 };

@@ -1,6 +1,7 @@
-import {interval, Observable, of} from "rxjs";
+import {from, interval, Observable, of, range, timer} from "rxjs";
 import {circuitBreaker} from "./circuitBreaker";
-import {take} from "rxjs/operators";
+import {catchError, concatMap, delay, map, take} from "rxjs/operators";
+import {TestScheduler} from "rxjs/testing";
 
 it('always success case', (done) => {
     interval(1000)
@@ -11,24 +12,32 @@ it('always success case', (done) => {
         }))
         .pipe(take(3))
         .subscribe({
-            next(item) { console.log('received', item); expect(item).toEqual(1); },
+            next(item) { expect(item).toEqual(1); },
             complete() { done(); }
         });
 });
 
-it('edge case', (done) => {
-    interval(1000)
+it('basic tc test', (done) => {
+    let counter = 0;
+    of(1,2,3,4,5,6,7,8,9,10)
+        .pipe(concatMap((x) => of(x).pipe(delay(300))))
         .pipe(circuitBreaker<number, number>({
             failureThreshold: 2,
-            execute: () => {
-                throw new Error('error');
+            timeoutSeconds: 2,
+            execute: (item) => {
+                if(counter++ > 2 && counter < 5) {
+                    throw new Error('error');
+                } else {
+                    return 1;
+                }
             },
-            fallback: () => 2,
+            fallback: (item) => {
+                return 2;
+            },
         }))
-        .pipe(take(3))
         .subscribe({
-            next(item) { console.log('received', item); expect(item).toEqual(1); },
-            error(error) { console.error('error', error); },
+            next(item) { expect(item).toBeLessThan(3); },
+            error(error) { done(); },
             complete() { done(); }
         });
-});
+}, 60 * 1000);
