@@ -1,3 +1,6 @@
-export const test = () => {
-    console.log(test);
+import { circuitBreaker, CircuitBreakOption } from "./circuitBreaker";
+
+export {
+    circuitBreaker,
+    CircuitBreakOption,
 };
