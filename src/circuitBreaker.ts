@@ -37,7 +37,6 @@ class CircuitBreakerSubscriber<T,R> extends Subscriber<T> {
     private readonly failureThreshold;
     private readonly timeoutSeconds;
     private failCounter = 0;
-    private timer;
     private startTime;
 
     constructor(destination: Subscriber<R>, option: CircuitBreakOption<T, R>) {
@@ -46,7 +45,6 @@ class CircuitBreakerSubscriber<T,R> extends Subscriber<T> {
         this.option = option;
         this.failureThreshold = option.failureThreshold || 1;
         this.timeoutSeconds = option.timeoutSeconds || 1;
-        this.startTime = moment();
     }
 
     private reset() {
@@ -58,12 +56,17 @@ class CircuitBreakerSubscriber<T,R> extends Subscriber<T> {
     protected _next(x: T) {
         let result;
 
+        if(!this.startTime) {
+            this.startTime = moment();
+        }
+
         if (moment.duration(moment().diff(this.startTime)).asSeconds() > this.timeoutSeconds) {
             this.reset();
         }
 
         if (this.state === CircuitBreakerState.ERROR) {
             this.destination.next(this.option.fallback(x));
+            return ;
         }
 
         try {
