@@ -42,7 +42,7 @@ it('fallback counter test', (done) => {
             complete() {
                 expect(result[0]).toEqual(5);
                 expect(result[1]).toEqual(5);
-                expect(result[0] + result[1]).toEqual(11);
+                expect(result[0] + result[1]).toEqual(10);
                 done();
             }
         });
