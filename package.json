@@ -6,18 +6,19 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "start": "ts-node src",
-    "test": "jest --runInBand",
+    "test": "jest --runInBand --forceExit",
     "build": "tsc"
   },
   "keywords": [],
   "bugs": {
     "url": "https://github.com/malgogi/straw/issues"
   },
-  "homepage":"https://github.com/malgogi/straw#readme",
+  "homepage": "https://github.com/malgogi/straw#readme",
   "author": "malgogi <dlowgh7@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "moment": "2.29.1",
+    "node-cron": "3.0.0",
     "rxjs": "6.6.3"
   },
   "devDependencies": {
