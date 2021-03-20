@@ -1,7 +1,6 @@
-import {from, interval, Observable, of, range, timer} from "rxjs";
+import {interval, of} from "rxjs";
 import {circuitBreaker} from "./circuitBreaker";
-import {catchError, concatMap, delay, map, take} from "rxjs/operators";
-import {TestScheduler} from "rxjs/testing";
+import {concatMap, delay, take} from "rxjs/operators";
 
 it('always success case', (done) => {
     interval(1000)
