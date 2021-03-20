@@ -22,7 +22,7 @@ yarn add malgogi-rx-straw --save
 
 ## cron
 
-cron is wrapper function of [https://www.npmjs.com/package/moment](moment), [node-cron](https://www.npmjs.com/package/node-cron)
+cron is wrapper function of [moment](https://www.npmjs.com/package/moment), [node-cron](https://www.npmjs.com/package/node-cron)
 
 ```typescript
 cron('* * * * * *')
