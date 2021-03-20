@@ -1,6 +1,6 @@
 {
   "name": "malgogi-rx-straw",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "rxjs utility module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
