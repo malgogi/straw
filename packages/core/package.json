@@ -1,6 +1,6 @@
 {
   "name": "@malgogi-rx-straw/core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "rxjs utility module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,6 +19,7 @@
   "author": "malgogi <dlowgh7@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "moment": "2.29.1",
     "node-cron": "^3.0.0",
     "rxjs": "^6.6.6"
   },
