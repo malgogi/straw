@@ -24,9 +24,7 @@
     "node": ">= 10.18.0"
   },
   "dependencies": {
-    "moment": "2.29.1",
-    "node-cron": "3.0.0",
-    "rxjs": "6.6.3"
+    "@malgogi-rx-straw/core": "file:packages/core"
   },
   "devDependencies": {
     "@types/jest": "26.0.20",
