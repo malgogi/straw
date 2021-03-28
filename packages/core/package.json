@@ -1,6 +1,6 @@
 {
   "name": "@malgogi-rx-straw/core",
-  "version": "0.0.1-alpha.17+1352076",
+  "version": "0.0.1-alpha.18+0a5733e",
   "description": "rxjs utility module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -21,5 +21,8 @@
   "dependencies": {
     "rxjs": "^6.6.6"
   },
-  "gitHead": "135207621fc51b20180e7acc48a97f86b49c7437"
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "0a5733ed98e07e47a8f4387e9714a19f7aa04fa5"
 }
