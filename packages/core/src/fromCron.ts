@@ -1,8 +1,8 @@
-import {Observable} from "rxjs";
-import * as moment from "moment";
+import {Observable} from 'rxjs';
+import * as moment from 'moment';
 const nodeCron = require('node-cron');
 
-export function cron(period: string = ''): Observable<number> {
+export function cron(period = ''): Observable<number> {
     if (typeof period !== 'string') {
         throw new Error('Invalid type of period');
     }
@@ -13,7 +13,7 @@ export function cron(period: string = ''): Observable<number> {
 
     return new Observable(observer => {
         nodeCron.schedule(period, () => {
-            observer.next(moment.now());
+            observer.next(moment().unix());
         });
     });
-};
+}

@@ -1,5 +1,5 @@
-import {cron} from "./fromCron";
-import {isNumeric} from "rxjs/internal-compatibility";
+import {isNumeric} from 'rxjs/internal-compatibility';
+import {cron} from './fromCron';
 
 it('with invalid cron string. It should throws error', () => {
     expect((done) => {

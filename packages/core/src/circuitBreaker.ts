@@ -1,23 +1,23 @@
-import {Observable, Operator, OperatorFunction, Subscriber} from "rxjs";
-import moment = require("moment");
+import {Observable, Operator, OperatorFunction, Subscriber} from 'rxjs';
+import moment = require('moment');
 
 export interface CircuitBreakOption<T, R> {
     failureThreshold?: number;
     timeoutSeconds?: number;
     fallback: (from: T) => R;
     execute: (from: T) => R;
-};
+}
 
 enum CircuitBreakerState {
     ERROR,
     SUCCESS,
-};
+}
 
 export function circuitBreaker<T, R>(option: CircuitBreakOption<T, R>): OperatorFunction<T, R> {
     return function circuitBreakerOperation(source: Observable<T>): Observable<R> {
         return source.lift(new CircuitBreakerOperator(option));
     };
-};
+}
 
 class CircuitBreakerOperator<T, R> implements Operator<T, R> {
     option: CircuitBreakOption<any, any>;
