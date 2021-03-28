@@ -20,6 +20,9 @@
   "homepage": "https://github.com/malgogi/straw#readme",
   "author": "malgogi <dlowgh7@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": ">= 10.18.0"
+  },
   "dependencies": {
     "moment": "2.29.1",
     "node-cron": "3.0.0",
