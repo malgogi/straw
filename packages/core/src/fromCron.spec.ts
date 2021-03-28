@@ -14,7 +14,7 @@ it('with invalid cron string. It should throws error', () => {
 it('Success case. It should return utc mili timestamp', (done) => {
     cron('* * * * * *')
         .subscribe((time) => {
-            expect(isNumeric(time)).toBe(false);
+            expect(isNumeric(time)).toBe(true);
             done();
         })
 });
