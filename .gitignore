@@ -1,27 +1,110 @@
-# dependencies
-node_modules/
+Skip to content
+Search or jump to…
 
-# IDE
-/.idea
-/.awcache
-/.vscode
-*.code-workspace
+Pull requests
+Issues
+Marketplace
+Explore
 
-# bundle
-packages/**/*.d.ts
-packages/**/*.js
+@malgogi
+marblejs
+/
+marble
+31
+1.7k
+56
+Code
+Issues
+2
+Pull requests
+1
+Discussions
+Actions
+Projects
+Wiki
+Security
+Insights
+marble/.gitignore
+@JozefFlakus
+JozefFlakus build(all): TypeScript project references
+Latest commit e50f552 on 25 Dec 2019
+ History
+ 2 contributors
+@JozefFlakus@krzysztof-miemiec
+63 lines (54 sloc)  1.5 KB
 
-# misc
+# --------------------------------------------------
+# IDE specific
+# --------------------------------------------------
+.vscode
+.idea
+
+# --------------------------------------------------
+# OS specific
+# --------------------------------------------------
 .DS_Store
-lerna-debug.log
-npm-debug.log
-yarn-error.log
-/**/npm-debug.log
-/packages/**/.npmignore
-/packages/**/LICENSE
 
-# build
-/dist
+# --------------------------------------------------
+# Logs
+# --------------------------------------------------
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# tests
-/test
+# --------------------------------------------------
+# Build artifacts
+# --------------------------------------------------
+build
+dist
+doc
+coverage
+tmp
+package-lock.json
+tsconfig.tsbuildinfo
+*.tgz
+
+# --------------------------------------------------
+# remove from npm package
+# --------------------------------------------------
+packages/**/*.spec.js
+
+# --------------------------------------------------
+# Dependency directories
+# --------------------------------------------------
+node_modules
+
+# --------------------------------------------------
+# Typescript v1 declaration files
+# --------------------------------------------------
+typings/
+
+# --------------------------------------------------
+# Optional cache
+# --------------------------------------------------
+.npm
+.eslintcache
+
+# --------------------------------------------------
+# Optional REPL history
+# --------------------------------------------------
+.node_repl_history
+
+# --------------------------------------------------
+# dotenv environment variables file
+# --------------------------------------------------
+.env
+env.ts
+© 2021 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About

@@ -6,7 +6,7 @@ module.exports = {
     "json",
     "ts"
   ],
-  rootDir: "src",
+  collectCoverageFrom : ['packages/**/*.ts'],
   testRegex: ".spec.ts$",
   transform: {
     "^.+\\.(t|j)s$": "ts-jest"
