@@ -1,6 +1,6 @@
 {
   "name": "malgogi-rx-straw",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "rxjs utility module",
   "scripts": {
     "start": "ts-node src",
@@ -9,8 +9,8 @@
     "lint": "eslint ./packages/**/src --ext .ts",
     "pretest": "yarn lint",
     "fixlint": "yarn lint --fix",
-    "publish": "lerna publish  --no-push --force-publish=*",
-    "publish:canary": "lerna publish --canary  --no-push --force-publish=*"
+    "publish": "lerna publish",
+    "publish:canary": "lerna publish --canary"
   },
   "private": true,
   "keywords": [],

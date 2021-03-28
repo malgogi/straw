@@ -10,12 +10,12 @@ malgogi-rx-straw is rxjs utility library.
 Using NPM:
 
 ```bash
-npm i --save malgogi-rx-straw 
+npm i --save @malgogi-rx-straw/core
 ```
 
 Using YARN:
 ```
-yarn add malgogi-rx-straw --save
+yarn add @malgogi-rx-straw/core --save
 ```
 
 ## Examples
@@ -36,20 +36,20 @@ cron('* * * * * *')
 
 ```typescript
 interval(1000)
-    .pipe(circuitBreaker<number, number>({
-        failureThreshold: 30,
-        execute: (source) => { 
-            // do business logic.
-            return 1;
-        },
-        fallback: () => {
-            // fail action.
-            return 2;
-        },
-    }))
-    .pipe(take(3))
-    .subscribe({
-        next(item) { console.log('You can get a 1 or 2') },
-        complete() { done(); }
-    });
+  .pipe(circuitBreaker<number, number>({
+    failureThreshold: 30,
+    execute: (source) => {
+      // do business logic.
+      return 1;
+    },
+    fallback: () => {
+      // fail action.
+      return 2;
+    },
+  }))
+  .pipe(take(3))
+  .subscribe({
+    next(item) { console.log('You can get a 1 or 2') },
+    complete() { done(); }
+  });
 ```
