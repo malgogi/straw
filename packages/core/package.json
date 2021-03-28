@@ -1,6 +1,6 @@
 {
   "name": "@malgogi-rx-straw/core",
-  "version": "0.0.1",
+  "version": "0.0.1-alpha.17+1352076",
   "description": "rxjs utility module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -9,7 +9,9 @@
     "test": "jest --config ../../jest.config.js --runInBand --forceExit",
     "build": "tsc"
   },
-  "keywords": ["rxjs"],
+  "keywords": [
+    "rxjs"
+  ],
   "bugs": {
     "url": "https://github.com/malgogi/straw/issues"
   },
@@ -18,5 +20,6 @@
   "license": "MIT",
   "dependencies": {
     "rxjs": "^6.6.6"
-  }
+  },
+  "gitHead": "135207621fc51b20180e7acc48a97f86b49c7437"
 }
