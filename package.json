@@ -12,7 +12,7 @@
     "publish": "lerna publish",
     "publish:canary": "lerna publish --canary"
   },
-  "private": false,
+  "private": true,
   "keywords": [],
   "bugs": {
     "url": "https://github.com/malgogi/straw/issues"
