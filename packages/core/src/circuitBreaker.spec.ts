@@ -46,3 +46,36 @@ it('fallback counter test', (done) => {
             }
         });
 }, 60 * 1000);
+
+it('async execution method test', (done) => {
+  let counter = 0;
+  const result = [0, 0];
+  of(1,2,3,4,5,6,7,8,9,10)
+    .pipe(concatMap((x) => of(x).pipe(delay(400))))
+    .pipe(circuitBreaker<number, number>({
+      failureThreshold: 2,
+      timeoutSeconds: 2,
+      execute: () => {
+        return new Promise((resolve, reject) => {
+          if(counter++ > 2 && counter < 7) {
+            reject(new Error('error'));
+          } else {
+            return resolve(0);
+          }
+        });
+      },
+      fallback: () => {
+        return 1;
+      },
+    }))
+    .subscribe({
+      next(index) { result[index] += 1; },
+      error() { throw new Error('It should not emit error.'); },
+      complete() {
+        expect(result[0]).toEqual(5);
+        expect(result[1]).toEqual(5);
+        expect(result[0] + result[1]).toEqual(10);
+        done();
+      }
+    });
+}, 60 * 1000);

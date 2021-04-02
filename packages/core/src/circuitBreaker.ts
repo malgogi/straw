@@ -4,8 +4,8 @@ import moment = require('moment');
 export interface CircuitBreakOption<T, R> {
     failureThreshold?: number;
     timeoutSeconds?: number;
-    fallback: (from: T) => R;
-    execute: (from: T) => R;
+    fallback: (from: T) => Promise<R> | R;
+    execute: (from: T) => Promise<R> | R;
 }
 
 enum CircuitBreakerState {
@@ -37,11 +37,11 @@ class CircuitBreakerSubscriber<T,R> extends Subscriber<T> {
     private readonly failureThreshold;
     private readonly timeoutSeconds;
     private failCounter = 0;
+    private taskCounter = 0;
     private startTime;
 
     constructor(destination: Subscriber<R>, option: CircuitBreakOption<T, R>) {
         super(destination);
-
         this.option = option;
         this.failureThreshold = option.failureThreshold || 1;
         this.timeoutSeconds = option.timeoutSeconds || 1;
@@ -53,10 +53,10 @@ class CircuitBreakerSubscriber<T,R> extends Subscriber<T> {
         this.failCounter = 0;
     }
 
-    protected _next(x: T) {
-        let result;
+    protected async _next(x: T) {
+        this.taskCounter++;
 
-        if(!this.startTime) {
+        if (!this.startTime) {
             this.startTime = moment();
         }
 
@@ -65,12 +65,14 @@ class CircuitBreakerSubscriber<T,R> extends Subscriber<T> {
         }
 
         if (this.state === CircuitBreakerState.ERROR) {
-            this.destination.next(this.option.fallback(x));
+            this.destination.next(await this.option.fallback(x));
+            this.taskCounter--;
             return ;
         }
 
+        let result;
         try {
-            result = this.option.execute(x);
+            result = await this.option.execute(x);
             this.reset();
         } catch (error) {
             this.failCounter++;
@@ -79,9 +81,19 @@ class CircuitBreakerSubscriber<T,R> extends Subscriber<T> {
                 this.state = CircuitBreakerState.ERROR;
             }
 
-            result = this.option.fallback(x);
+            result = await this.option.fallback(x);
         }
 
         this.destination.next(result);
+        this.taskCounter--;
+    }
+
+    protected _complete() {
+      const interval = setInterval(() => {
+        if (this.taskCounter === 0) {
+          clearInterval(interval);
+          this.destination.complete();
+        }
+      }, 100);
     }
 }

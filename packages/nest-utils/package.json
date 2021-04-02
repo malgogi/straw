@@ -1,7 +1,7 @@
 {
-  "name": "@malgogi-rx-straw/core",
-  "version": "0.0.5",
-  "description": "rxjs utility module",
+  "name": "@malgogi-rx-straw/nest-utils",
+  "version": "0.0.4",
+  "description": "nest-utils",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -19,11 +19,20 @@
   "author": "malgogi <dlowgh7@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@malgogi-rx-straw/core": "0.0.4",
     "moment": "2.29.1",
     "node-cron": "^3.0.0",
     "rxjs": "^6.6.6"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "7.6.15",
+    "@nestjs/core": "7.6.15"
+  },
+  "devDependencies": {
+    "@nestjs/common": "7.6.15",
+    "@nestjs/core": "7.6.15"
   }
 }
