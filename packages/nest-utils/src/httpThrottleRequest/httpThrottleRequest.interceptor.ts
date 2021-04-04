@@ -5,7 +5,7 @@ import moment = require('moment');
 
 
 @Injectable()
-export class ThrottleRequestInterceptor implements NestInterceptor {
+export class HttpThrottleRequestInterceptor implements NestInterceptor {
   private handlerNameMap: { [name: string]: Moment } = {};
 
   constructor(private throttleSeconds: number = 10) {}
@@ -19,7 +19,7 @@ export class ThrottleRequestInterceptor implements NestInterceptor {
       return next.handle();
     }
 
-    const name = ThrottleRequestInterceptor.determineHandlerName(context);
+    const name = HttpThrottleRequestInterceptor.determineHandlerName(context);
 
     if (!name) {
       return ;

@@ -1,8 +1,8 @@
 import * as request from 'supertest';
 import {INestApplication} from '@nestjs/common';
 import { Test } from '@nestjs/testing';
-import {ThrottleRequestModule} from './throttleRequest.module';
-import {ThrottleRequestInterceptor} from './throttleRequest.interceptor';
+import {HttpThrottleRequestModule} from './httpThrottleRequestModule';
+import {HttpThrottleRequestInterceptor} from './httpThrottleRequest.interceptor';
 import {TestController} from './TestController.mock';
 
 const sleep  = (timeoutMillis: number): Promise<any> => {
@@ -13,17 +13,17 @@ const sleep  = (timeoutMillis: number): Promise<any> => {
   })
 };
 
-describe('ThrottleRequestInterceptor', () => {
+describe('HttpThrottleRequestInterceptor', () => {
   let app: INestApplication;
 
   beforeEach(async () => {
     const moduleRef = await Test.createTestingModule({
-        imports: [ThrottleRequestModule],
+        imports: [HttpThrottleRequestModule],
         controllers: [TestController],
       }).compile();
 
     app = moduleRef.createNestApplication();
-    app.useGlobalInterceptors(new ThrottleRequestInterceptor(2));
+    app.useGlobalInterceptors(new HttpThrottleRequestInterceptor(2));
     await app.init();
   });
 

@@ -1,3 +1,3 @@
-import { ThrottleRequestModule } from './throttleRequest/throttleRequest.module';
+import { HttpThrottleRequestModule } from './httpThrottleRequest/httpThrottleRequestModule';
 
-export { ThrottleRequestModule }
+export { HttpThrottleRequestModule }
