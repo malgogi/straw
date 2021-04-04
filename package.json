@@ -1,25 +1,48 @@
 {
-  "name": "straw",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "malgogi-rx-straw",
+  "version": "0.0.4",
+  "description": "rxjs utility module",
   "scripts": {
     "start": "ts-node src",
-    "test": "jest"
+    "test": "jest --runInBand --forceExit",
+    "build": "lerna run build",
+    "lint": "eslint ./packages/**/src --ext .ts",
+    "pretest": "yarn lint",
+    "fixlint": "yarn lint --fix",
+    "publish": "lerna publish",
+    "publish:canary": "lerna publish --canary"
   },
-  "author": "",
-  "license": "ISC",
+  "private": true,
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/malgogi/straw/issues"
+  },
+  "homepage": "https://github.com/malgogi/straw#readme",
+  "author": "malgogi <dlowgh7@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">= 10.18.0"
+  },
   "dependencies": {
-    "commander": "7.1.0",
-    "jsencrypt": "3.0.1",
-    "rxjs": "6.6.3"
+    "@malgogi-rx-straw/core": "file:packages/core",
+    "moment": "2.29.1",
+    "node-cron": "3.0.0",
+    "rxjs": "6.6.6"
   },
   "devDependencies": {
     "@types/jest": "26.0.20",
     "@types/node": "14.14.31",
+    "@typescript-eslint/eslint-plugin": "4.19.0",
+    "@typescript-eslint/parser": "4.19.0",
+    "eslint": "7.23.0",
+    "eslint-plugin-import": "2.22.1",
     "jest": "26.6.3",
+    "lerna": "^4.0.0",
     "ts-jest": "26.5.2",
     "ts-node": "9.1.1",
     "typescript": "4.2.2"
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }
