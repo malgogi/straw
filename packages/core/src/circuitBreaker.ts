@@ -39,6 +39,7 @@ class CircuitBreakerSubscriber<T,R> extends Subscriber<T> {
     private failCounter = 0;
     private taskCounter = 0;
     private startTime;
+    private hasCompleted = false;
 
     constructor(destination: Subscriber<R>, option: CircuitBreakOption<T, R>) {
         super(destination);
@@ -54,7 +55,7 @@ class CircuitBreakerSubscriber<T,R> extends Subscriber<T> {
     }
 
     protected async _next(x: T) {
-        this.taskCounter++;
+        this.beforeSend();
 
         if (!this.startTime) {
             this.startTime = moment();
@@ -65,8 +66,7 @@ class CircuitBreakerSubscriber<T,R> extends Subscriber<T> {
         }
 
         if (this.state === CircuitBreakerState.ERROR) {
-            this.destination.next(await this.option.fallback(x));
-            this.taskCounter--;
+            this.send(await this.option.fallback(x));
             return ;
         }
 
@@ -80,20 +80,28 @@ class CircuitBreakerSubscriber<T,R> extends Subscriber<T> {
             if(this.failCounter >= this.failureThreshold) {
                 this.state = CircuitBreakerState.ERROR;
             }
-
             result = await this.option.fallback(x);
         }
 
-        this.destination.next(result);
-        this.taskCounter--;
+        this.send(result);
+    }
+
+    private beforeSend() {
+      this.taskCounter++;
+    }
+
+    private send(result: R) {
+      this.taskCounter--;
+      this.destination.next(result);
+      if (this.taskCounter === 0 && this.hasCompleted) {
+        this.destination.complete();
+      }
     }
 
     protected _complete() {
-      const interval = setInterval(() => {
-        if (this.taskCounter === 0) {
-          clearInterval(interval);
-          this.destination.complete();
-        }
-      }, 100);
+      this.hasCompleted = true;
+      if (this.taskCounter === 0) {
+        this.destination.complete();
+      }
     }
 }

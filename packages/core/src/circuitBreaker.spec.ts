@@ -57,11 +57,13 @@ it('async execution method test', (done) => {
       timeoutSeconds: 2,
       execute: () => {
         return new Promise((resolve, reject) => {
-          if(counter++ > 2 && counter < 7) {
-            reject(new Error('error'));
-          } else {
-            return resolve(0);
-          }
+          setTimeout(() => {
+            if(counter++ > 2 && counter < 7) {
+              reject(new Error('error'));
+            } else {
+              return resolve(0);
+            }
+          }, 1000);
         });
       },
       fallback: () => {
