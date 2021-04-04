@@ -18,6 +18,34 @@ Using YARN:
 yarn add @malgogi-rx-straw/nest-utils --save
 ```
 
+## Dependencies
+
+```json
+{
+  "dependencies": {
+    "@malgogi-rx-straw/core": "0.0.6",
+    "moment": "2.29.1",
+    "node-cron": "^3.0.0",
+    "rxjs": "^6.6.6"
+  },
+  "devDependencies": {
+    "@nestjs/common": "7.6.15",
+    "@nestjs/core": "7.6.15",
+    "@nestjs/platform-express": "7.6.15",
+    "@nestjs/testing": "7.6.15",
+    "@types/supertest": "2.0.11",
+    "reflect-metadata": "0.1.13",
+    "supertest": "6.1.3"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "7.6.15",
+    "@nestjs/core": "7.6.15",
+    "@nestjs/platform-express": "7.6.15",
+    "reflect-metadata": "0.1.13"
+  }
+}
+```
+
 ## Examples
 
 ## HttpThrottleRequestInterceptor
