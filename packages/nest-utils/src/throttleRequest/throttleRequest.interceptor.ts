@@ -8,6 +8,8 @@ import moment = require('moment');
 export class ThrottleRequestInterceptor implements NestInterceptor {
   private handlerNameMap: { [name: string]: Moment } = {};
 
+  constructor(private throttleSeconds: number = 10) {}
+
   private static determineHandlerName(context: ExecutionContext): string | null {
       return context.getHandler().name;
   }
@@ -24,7 +26,7 @@ export class ThrottleRequestInterceptor implements NestInterceptor {
     }
 
     const previous = this.handlerNameMap[name];
-    if (previous && previous.isAfter(moment().subtract(2, 'seconds'))) {
+    if (previous && previous.isAfter(moment().subtract(this.throttleSeconds, 'seconds'))) {
       throw new HttpException('Too many Request', 429);
     }
 

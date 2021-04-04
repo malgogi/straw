@@ -23,7 +23,7 @@ describe('ThrottleRequestInterceptor', () => {
       }).compile();
 
     app = moduleRef.createNestApplication();
-    app.useGlobalInterceptors(new ThrottleRequestInterceptor());
+    app.useGlobalInterceptors(new ThrottleRequestInterceptor(2));
     await app.init();
   });
 
