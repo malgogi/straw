@@ -7,8 +7,9 @@
     "test": "jest --runInBand --forceExit",
     "build": "lerna run build",
     "lint": "eslint ./packages/**/src --ext .ts",
-    "pretest": "yarn lint",
     "fixlint": "yarn lint --fix",
+    "pretest": "yarn lint",
+    "prepublish": "yarn build",
     "publish": "lerna publish",
     "publish:canary": "lerna publish --canary"
   },
