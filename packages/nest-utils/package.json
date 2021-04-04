@@ -5,7 +5,7 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "start": "ts-node ../core/src",
+    "start": "ts-node",
     "test": "jest --config ../../jest.config.js --runInBand --forceExit",
     "build": "tsc"
   },

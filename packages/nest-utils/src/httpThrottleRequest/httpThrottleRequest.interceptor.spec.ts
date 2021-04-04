@@ -1,7 +1,6 @@
 import * as request from 'supertest';
 import {INestApplication} from '@nestjs/common';
 import { Test } from '@nestjs/testing';
-import {HttpThrottleRequestModule} from './httpThrottleRequestModule';
 import {HttpThrottleRequestInterceptor} from './httpThrottleRequest.interceptor';
 import {TestController} from './TestController.mock';
 
@@ -18,7 +17,6 @@ describe('HttpThrottleRequestInterceptor', () => {
 
   beforeEach(async () => {
     const moduleRef = await Test.createTestingModule({
-        imports: [HttpThrottleRequestModule],
         controllers: [TestController],
       }).compile();
 

@@ -1,3 +1,4 @@
-import { HttpThrottleRequestModule } from './httpThrottleRequest/httpThrottleRequestModule';
+import { HttpThrottleRequestInterceptor } from './httpThrottleRequest/httpThrottleRequest.interceptor';
 
-export { HttpThrottleRequestModule }
+
+export { HttpThrottleRequestInterceptor }
