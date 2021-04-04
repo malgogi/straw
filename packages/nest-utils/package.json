@@ -1,6 +1,6 @@
 {
   "name": "@malgogi-rx-straw/nest-utils",
-  "version": "0.0.6",
+  "version": "0.0.1",
   "description": "rxjs utility module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

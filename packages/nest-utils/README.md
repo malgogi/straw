@@ -1,8 +1,8 @@
-# malgogi-rx-straw
+# @malgogi-rx-straw/nest-utils
 
 ## Description
 
-malgogi-rx-straw is rxjs utility library.
+Nest utitlity libs.
 
 
 ## Installation
@@ -10,46 +10,27 @@ malgogi-rx-straw is rxjs utility library.
 Using NPM:
 
 ```bash
-npm i --save @malgogi-rx-straw/core
+npm i --save @malgogi-rx-straw/nest-utils
 ```
 
 Using YARN:
 ```
-yarn add @malgogi-rx-straw/core --save
+yarn add @malgogi-rx-straw/nest-utils --save
 ```
 
 ## Examples
 
-## cron
+## HttpThrottleRequestInterceptor
 
-cron is wrapper function of [moment](https://www.npmjs.com/package/moment), [node-cron](https://www.npmjs.com/package/node-cron)
+It throttles only http request. ( Supports only http request, others will be ignored ).
+It supports only thumbling window method. ( It will be updated. )
 
+### Usages
 ```typescript
-cron('* * * * * *')
-    .subscribe((utcTimeInMillis: number) => {
-        console.log(`task was started at ${utcTimeInMillis}`);
-        // do task
-    })
-```
 
-## circuitBreaker
-
-```typescript
-interval(1000)
-    .pipe(circuitBreaker<number, number>({
-        failureThreshold: 30,
-        execute: (source) => {
-            // do business logic.
-            return 1;
-        },
-        fallback: () => {
-            // fail action.
-            return 2;
-        },
-    }))
-    .pipe(take(3))
-    .subscribe({
-        next(item) { console.log('You can get a 1 or 2') },
-        complete() { done(); }
-    });
+// app.ts
+// Allow 1 request every 2 seconds( thumbling window ).
+// If you request over 2 requests in 2 seconds.
+// It will respond with 429 http status code.  (Too many requests.)
+app.useGlobalInterceptors(new HttpThrottleRequestInterceptor(2));
 ```
