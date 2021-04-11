@@ -3,7 +3,6 @@ import {Observable} from 'rxjs';
 import {Moment} from 'moment';
 import moment = require('moment');
 
-
 @Injectable()
 export class HttpThrottleRequestInterceptor implements NestInterceptor {
   private handlerNameMap: { [name: string]: Moment } = {};
@@ -11,7 +10,7 @@ export class HttpThrottleRequestInterceptor implements NestInterceptor {
   constructor(private throttleSeconds: number = 10) {}
 
   private static determineHandlerName(context: ExecutionContext): string | null {
-      return context.getHandler().name;
+    return context.getHandler().name;
   }
 
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
