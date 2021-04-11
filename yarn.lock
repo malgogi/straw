@@ -1176,22 +1176,6 @@
     npmlog "^4.1.2"
     write-file-atomic "^3.0.3"
 
-"@malgogi-rx-straw/core@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@malgogi-rx-straw/core/-/core-0.0.6.tgz#5ff040b75ad45134663cae66bff9666b7197d00c"
-  integrity sha512-UXe8tqTEmm+3ZIkNjwSadDnJUZVUpXI4Yb+PNjOuPcOWFzAdxM/h1A9vXBBZLJJGtbO0qnd5FYxbyXE/s5ESbw==
-  dependencies:
-    moment "2.29.1"
-    node-cron "^3.0.0"
-    rxjs "^6.6.6"
-
-"@malgogi-rx-straw/core@file:packages/core":
-  version "0.0.7"
-  dependencies:
-    moment "2.29.1"
-    node-cron "^3.0.0"
-    rxjs "^6.6.6"
-
 "@nestjs/common@7.6.15":
   version "7.6.15"
   resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.6.15.tgz#ae96f18cb6209a21724ffa7ed1a182be1e4fd0af"

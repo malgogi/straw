@@ -1,8 +1,7 @@
 import {CallHandler, ExecutionContext, HttpException, Injectable, NestInterceptor} from '@nestjs/common';
 import {Observable} from 'rxjs';
-import {Moment} from 'moment';
 import moment = require('moment');
-
+import {Moment} from 'moment';
 
 @Injectable()
 export class HttpThrottleRequestInterceptor implements NestInterceptor {
@@ -11,7 +10,7 @@ export class HttpThrottleRequestInterceptor implements NestInterceptor {
   constructor(private throttleSeconds: number = 10) {}
 
   private static determineHandlerName(context: ExecutionContext): string | null {
-      return context.getHandler().name;
+    return context.getHandler().name;
   }
 
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
