@@ -1,7 +1,7 @@
 import {CallHandler, ExecutionContext, HttpException, Injectable, NestInterceptor} from '@nestjs/common';
 import {Observable} from 'rxjs';
-import moment = require('moment');
 import {Moment} from 'moment';
+import moment = require('moment');
 
 @Injectable()
 export class HttpThrottleRequestInterceptor implements NestInterceptor {
