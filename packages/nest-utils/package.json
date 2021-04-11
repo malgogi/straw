@@ -1,6 +1,6 @@
 {
   "name": "@malgogi-rx-straw/nest-utils",
-  "version": "0.1.2",
+  "version": "0.1.1",
   "description": "rxjs utility module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -20,7 +20,7 @@
   "author": "malgogi <dlowgh7@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@malgogi-rx-straw/core": "^0.1.1-alpha.1+30cc956",
+    "@malgogi-rx-straw/core": "^0.1.1",
     "moment": "2.29.1",
     "node-cron": "^3.0.0",
     "rxjs": "^6.6.6"
