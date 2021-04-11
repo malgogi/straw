@@ -1,4 +1,4 @@
-# malgogi-rx-straw
+# @malgogi-rx-straw/core
 
 ## Description
 

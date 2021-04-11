@@ -7,8 +7,9 @@
     "test": "jest --runInBand --forceExit",
     "build": "lerna run build",
     "lint": "eslint ./packages/**/src --ext .ts",
-    "pretest": "yarn lint",
     "fixlint": "yarn lint --fix",
+    "pretest": "yarn lint",
+    "prepublish": "yarn build",
     "publish": "lerna publish",
     "publish:canary": "lerna publish --canary"
   },
@@ -23,12 +24,7 @@
   "engines": {
     "node": ">= 10.18.0"
   },
-  "dependencies": {
-    "@malgogi-rx-straw/core": "file:packages/core",
-    "moment": "2.29.1",
-    "node-cron": "3.0.0",
-    "rxjs": "6.6.6"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/jest": "26.0.20",
     "@types/node": "14.14.31",
